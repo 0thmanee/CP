@@ -27,6 +27,7 @@ using namespace std;
 #define vi vector<int>
 #define vll vector<long long>
 #define mii map<int, int>
+#define mll map<long long, long long>
 #define umii unordered_map<int, int>
 #define si set<int>
 #define usi unordered_set<int>
@@ -68,16 +69,35 @@ typedef unsigned long int uint32;
 typedef long long int int64;
 typedef unsigned long long int  uint64;
 
+bool is_palind(int n1, int n2)
+{
+    return ((n1 / 10 == n2 % 10) && (n1 % 10 == n2 / 10));
+}
+
 void solve(){
+    string time; cin >> time;
+    int x; cin >> x;
+    int h = atoi(time.substr(0, 2).c_str()), m = atoi(time.substr(2, 2).c_str());
+    int h1 = h, m1 = m;
+    int ans = 0;
+    if (is_palind(h1, m1))
+        ans++;
+    inc_time(h1, m1, x);
+    while (h1 != h || m1 != m)
+    {
+        if (is_palind(h1, m1))
+            ans++;
+        inc_time(h1, m1, x);
+    }
+    cout << ans << endl;
 }
 
 int main()
 {
 	ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-	int t;
-	cin >> t;
-	while (t--)
-		solve();
+    int t; cin >> t;
+    while (t--)
+	    solve();
 	return 0;
 }

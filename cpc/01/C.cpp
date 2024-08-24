@@ -32,7 +32,6 @@ using namespace std;
 #define usi unordered_set<int>
 #define sc set<char>
 #define usc unordered_set<char>
-#define endl '\n'
 const int MAX_N = int(5e5);
 
 /* FUNCTIONS */
@@ -58,7 +57,6 @@ ll pow(ll x, ll p){if (p == 0) return (1);ll res = pow(x, p/2);if (p%2) return (
 string to_upper(string a) { for (int i=0;i<(int)a.size();++i) if (a[i]>='a' && a[i]<='z') a[i]-='a'-'A'; return a; }
 string to_lower(string a) { for (int i=0;i<(int)a.size();++i) if (a[i]>='A' && a[i]<='Z') a[i]+='a'-'A'; return a; }
 bool prime(ll a) { if (a==1) return 0; for (int i=2;i<=round(sqrt(a));++i) if (a%i==0) return 0; return 1; }
-void inc_time(int &h, int &m, int x) {m += x; h += m / 60; m %= 60; h %= 24; }
 void yes() { cout<<"YES\n"; }
 void no() { cout<<"NO\n"; }
 
@@ -68,16 +66,23 @@ typedef unsigned long int uint32;
 typedef long long int int64;
 typedef unsigned long long int  uint64;
 
-void solve(){
-}
-
 int main()
 {
 	ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-	int t;
-	cin >> t;
-	while (t--)
-		solve();
+	ll n;
+	cin >> n;
+	ll prev = -1;
+	ll res = 0;
+	f(i, 0, n)
+	{
+		ll inp;
+		cin >> inp;
+		if (prev > inp)
+			res += prev - inp;
+        else
+            prev = inp;
+	}
+	cout << res;
 	return 0;
 }

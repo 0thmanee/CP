@@ -16,6 +16,7 @@
 #include <cassert>
 #include <random>
 #include <sstream>
+#include <bits/stdc++.h>
 using namespace std;
 
 /* TYPES  */
@@ -27,12 +28,12 @@ using namespace std;
 #define vi vector<int>
 #define vll vector<long long>
 #define mii map<int, int>
+#define mll map<long long, long long>
 #define umii unordered_map<int, int>
 #define si set<int>
 #define usi unordered_set<int>
 #define sc set<char>
 #define usc unordered_set<char>
-#define endl '\n'
 const int MAX_N = int(5e5);
 
 /* FUNCTIONS */
@@ -58,7 +59,6 @@ ll pow(ll x, ll p){if (p == 0) return (1);ll res = pow(x, p/2);if (p%2) return (
 string to_upper(string a) { for (int i=0;i<(int)a.size();++i) if (a[i]>='a' && a[i]<='z') a[i]-='a'-'A'; return a; }
 string to_lower(string a) { for (int i=0;i<(int)a.size();++i) if (a[i]>='A' && a[i]<='Z') a[i]+='a'-'A'; return a; }
 bool prime(ll a) { if (a==1) return 0; for (int i=2;i<=round(sqrt(a));++i) if (a%i==0) return 0; return 1; }
-void inc_time(int &h, int &m, int x) {m += x; h += m / 60; m %= 60; h %= 24; }
 void yes() { cout<<"YES\n"; }
 void no() { cout<<"NO\n"; }
 
@@ -69,15 +69,22 @@ typedef long long int int64;
 typedef unsigned long long int  uint64;
 
 void solve(){
+    string s;
+    int i, j;
+    cin >> s >> i >> j;
+    while (j > i)
+    {
+        swap(s[i - 1], s[j - 1]);
+        i++;
+        j--;
+    }
+    cout << s;
 }
 
 int main()
 {
 	ios_base::sync_with_stdio(false);
     cin.tie(NULL);
-	int t;
-	cin >> t;
-	while (t--)
-		solve();
+	solve();
 	return 0;
 }
